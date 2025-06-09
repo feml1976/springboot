@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+        <h1 th:text="${title}"></h1>
+    <p th:text="${description}"></p>
+    <ul>
+        <li>Name: <span th:text="${name}"></span></li>
+        <li>Last Name: <span th:text="${lastname}"></span></li>
+        <li>User: <span th:text="${user}"></span></li>
+        <li>UserName: <span th:text="${user.name}"></span></li>
+        <li>UserLastName: <span th:text="${user.lastname}"></span></li>
+        <li>Email: <span th:text="${user.email}"></span></li>
+        <li th:if="${user.email != null}"> Email: <span th:text="${user.email}"></span></li>
+        <li th:if="${user.email}"> Email: <span th:text="${user.email}"></span></li>       
+        <li th:if="${not (user.email != null)}"> Email: <span th:text="${'No tiene email'}"></span></li>
+        <li th:if="${user.email == null}"> Email: <span th:text="${'No tiene email'}"></span></li>
+        <li th:if="${user.phone != null}"> Phone: <span th:text="${user.phone}"></span></li>
+        <li th:if="${user.address != null}"> Address: <span th:text="${user.address}"></span></li>
+
+
+    </ul>
+
+</body>
+</html>
