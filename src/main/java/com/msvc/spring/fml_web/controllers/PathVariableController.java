@@ -3,6 +3,8 @@ package com.msvc.spring.fml_web.controllers;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import com.msvc.spring.fml_web.FmlWebApplication;
@@ -81,13 +83,28 @@ public class PathVariableController {
      * @param code El código recibido como variable de ruta, convertido automáticamente a {@code Integer}.
      * @return Una respuesta HTTP 200 OK con un objeto {@link ParamDto} conteniendo el mensaje y el código.
      */
-    @GetMapping("/bazscs/{message}/{id}")
+    @GetMapping("/bazscs/{message}/{id}")//http://localhost:8090/api/path-variable/bazscs/hello/9875
     public ResponseEntity<ParamDto> bazscs(@PathVariable String message, @PathVariable Long id) {
-        // Spring Boot automáticamente convierte 'code' a Integer.
+        // Spring Boot automáticamente convierte 'id' a Long.
         // Si la conversión falla, Spring lanzará una excepción MethodArgumentTypeMismatchException,
         // la cual puede ser manejada por un controlador de excepciones global si se desea.
         ParamDto paramDto = new ParamDto(message, id);
         return ResponseEntity.ok(paramDto);
+    }
+    // Resto de endpoints...
+    /**
+     * Endpoint que recibe un mensaje, un código y un id como variables de ruta, y los retorna encapsulados en un {@link ParamDto}.
+     * Ejemplo de uso: {@code http://localhost:8090/api/path-variable/bazscsi/hello/9875/123456789}
+     *
+     * @param message El mensaje recibido como variable de ruta.
+     * @param code El código recibido como variable de ruta, convertido automáticamente a {@code Integer}.
+     * @param id El id recibido como variable de ruta, convertido automáticamente a {@code Long}.
+     * @return Una respuesta HTTP 200 OK con un objeto {@link ParamDto} conteniendo el mensaje, el código y el id.
+     */
+    @PostMapping("/create")//http://localhost:8090/api/path-variable/create
+    public ResponseEntity<ParamDto> create(@RequestBody ParamDto entityDto) {
+        var entity = new ParamDto(entityDto.getMessage().toUpperCase(), entityDto.getCode(), entityDto.getId());
+        return ResponseEntity.ok(entity);
     }
 
 }

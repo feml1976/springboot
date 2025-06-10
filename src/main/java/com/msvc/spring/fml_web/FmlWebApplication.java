@@ -10,6 +10,11 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  * y la configuración de beans.
  */
 @SpringBootApplication
+/*@PropertySources({
+	@PropertySource("classpath:parameters.properties"),
+	@PropertySource("classpath:configuration.properties")
+})*/
+
 public class FmlWebApplication {
 
 	/**
