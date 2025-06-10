@@ -17,6 +17,14 @@
         <li>Last Name: <span th:text="${user.lastname}"></span></li>
         <li>User: <span th:text="${user}"></span></li>
     </ul>
-
+<a th:href="@{/listUsers}">Ver Usuarios</a>
+<br>
+<a th:href="@{'/api/request-params/foo?param=' + ${title}}">Ver Mensaje</a>
+<br>
+<a th:href="@{/api/request-params/foo?param=Hola enviando parametros desde un html}">Mensaje desde HTML</a>
+<br>
+<a th:href="@{/api/request-params/foo(param='Esta es otra forma de enviar parametros desde un html')}">Mensaje HTML</a>
+<br>
+<a th:href="@{/api/request-params/fooTwo(text='Enviando dos parametros desde un html', code=951357)}">Dos parametros desde HTML</a>
 </body>
 </html>

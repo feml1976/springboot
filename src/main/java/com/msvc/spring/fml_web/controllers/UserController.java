@@ -138,5 +138,23 @@ public class UserController {
         return users;*/
     }
 
-    
+    @GetMapping("/listUsers")//http://localhost:8090/path/listUsers    
+    public String listUsers(ModelMap model) {   
+        // This method can be used to retrieve a list of users
+        /*List<UserDto> entityDtos = new ArrayList<>();
+        entityDtos.add(new UserDto("Esposa", "Alejandra", "jimenez", "alejandra.jimenez@example.com"));
+        entityDtos.add(new UserDto("Mascota", "Rocky", "Montoya", "rocky.montoya@example.com"));
+        entityDtos.add(new UserDto("Hermano", "Cristian", "Montoya", "cristian.montoya@example.com"));
+        entityDtos.add(new UserDto("Hermano", "Jose", "Montoya", "jose.montoya@example.com"));
+        entityDtos.add(new UserDto("Madre", "Alba", "Lopez", "alba.lopez@example.com"));
+        entityDtos.add(new UserDto("Padre", "Jose", "Montoya", "jose.montoya@example.com"));
+        
+        // Add the list of users to the model
+        
+        model.addAttribute("users", entityDtos);
+        */
+        model.addAttribute("title", "List of Users");    
+        model.addAttribute("description", "list of users to the model");
+        return "listUsers"; // This returns the name of the view to be rendered
+    }
 }
